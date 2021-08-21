@@ -1,6 +1,6 @@
 .data
 	Initial_msg: .asciiz "\n\t**********************************\n\t* WELCOME TO BULC ONLINE CASINO *\n\t********************************** \n PLEASE ENTER AN AMOUNT BETWEEN $1 TO $1000 DOLLARS TO BET. \n\tWISH YOU GOOD LUCK\n\n"
-	Initial_msg2: .asciiz "\nLet's start the game. \nFind out the secret number between 1 and 100 . \nEnter 0 to give up\n\n"
+	Initial_msg2: .asciiz "\nLet's start the game. \nFind out the secret number between 1 and 100. \nEnter 0 to give up\n\n"
 	Bigger_msg: .asciiz "\n Secret number is bigger than that one...\n"
 	Smaller_msg: .asciiz "\n Secret number is smaller than that one...\n"
 	Right_Answer_msg: .asciiz "\n\tCongratulations! \nYou've got it!"
