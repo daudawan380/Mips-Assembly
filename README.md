@@ -1,2 +1,3 @@
 # Mips-Assembly
-in this repository we have  mips assembly projects 
+In this repository we have different mips assembly projects, you just need to copy the code and paste it in your editor or simulator and run 
+You may also ask questions, commit and pull request your suggestions...
