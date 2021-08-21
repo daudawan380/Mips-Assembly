@@ -1,0 +1,134 @@
+.data
+arrayName: .space 100
+arrayNumber: .space 100
+arrayAddress: .space 100
+arraySearch: .space 100
+endl: .asciiz "\n"
+msg: .asciiz "\tThis is a Telephone Directory.\n"
+invalid: .asciiz "\nInvalid option entered.\n"
+options: .asciiz "\nPress '1' to add a New Telephone Record.\nPress '2' to show all telephone records.\nPress '3' to search a telephone record.\nPress '4' to modify a telephone record.\nPress '5' to delete a telephone record.\nPress '6' to exit.\nEnter your choice: "
+index: .asciiz "At Index "
+name: .asciiz "\nEnter Name    : "
+number: .asciiz "Enter Number  : "
+address: .asciiz "Enter Address : "
+print_name: .asciiz "\nName is    : "
+print_number: .asciiz "Number is  : "
+print_address: .asciiz "Address is : "
+new_name: .asciiz "\nEnter New Name    : "
+new_number: .asciiz "Enter New Number  : "
+new_address: .asciiz "Enter New Address : "
+search: .asciiz "\nTo SEARCH a record, enter it's index number: "
+modify: .asciiz "\nTo MODIFY a record, enter it's index number: "
+delete: .asciiz "\nTo DELETE a record, enter it's index number: "
+null: .asciiz "NULL\n"
+modified: .asciiz "\nThis record is modified.\n"
+deleted: .asciiz "\nThis record is deleted.\n"
+
+.text
+main:				#main function
+li $v0,4
+la $a0,msg
+syscall
+li $t0,0
+li $t1,1
+
+menu:				#function to display menu
+li $v0,4
+la $a0,options
+syscall
+li $v0,4
+syscall
+move $s0,$v0
+
+beq $s0,1,option1			#if choice is 1 then control flow to option 1
+beq $s0,2,option2			#'' '' ''
+beq $s0,3,option3
+beq $s0,4,option4
+beq $s0,5,option5
+beq $s0,6,exit
+li $v0,4
+la $a0,invalid				#for invalid chic
+syscall
+j menu
+
+option1:
+li $v0,4
+la $a0,endl
+syscall
+li $v0,4
+la $a0,index
+syscall
+li $v0,1
+move $a0,$t1
+syscall
+li $v0,4
+la $a0,name
+syscall
+li $v0,8
+la $a0, arrayName($t0)
+li $a1, 20
+syscall
+li $v0,4
+la $a0,number
+syscall
+li $v0,8
+la $a0, arrayNumber($t0)
+li $a1, 20
+syscall
+li $v0,4
+la $a0,address
+syscall
+li $v0,8
+la $a0, arrayAddress($t0)
+li $a1, 20
+syscall
+addi $t0,$t0,20
+addi $t1,$t1,1
+j menu
+
+option2:
+li $t2,0
+li $t6,1
+loop2:
+beq $t2,$t0,menu
+li $v0,4
+la $a0,endl
+syscall
+j menu
+
+option3:
+li $t3,0
+li $t4,0
+li $t5,20
+li $v0,4
+la $a0,search
+syscall
+li $v0,5
+syscall 
+j menu
+
+option4:
+li $t3,0
+li $t4,0
+li $t5,20
+li $v0,4
+la $a0,modify
+syscall
+li $v0,5
+syscall 
+j menu
+
+option5:
+li $t3,0
+li $t4,0
+li $t5,20
+li $v0,4
+la $a0,delete
+syscall
+li $v0,5
+syscall 
+j menu
+
+exit:
+li $v0,10
+syscall
