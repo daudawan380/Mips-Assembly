@@ -4,7 +4,7 @@ arrayNumber: .space 100
 arrayAddress: .space 100
 arraySearch: .space 100
 endl: .asciiz "\n"
-msg: .asciiz "\tThis is a Telephone Directory.\n"
+msg: .asciiz "\t\tThis is a Telephone Directory.\n"
 invalid: .asciiz "\nInvalid option entered.\n"
 options: .asciiz "\nPress '1' to add a New Telephone Record.\nPress '2' to show all telephone records.\nPress '3' to search a telephone record.\nPress '4' to modify a telephone record.\nPress '5' to delete a telephone record.\nPress '6' to exit.\nEnter your choice: "
 index: .asciiz "At Index "
